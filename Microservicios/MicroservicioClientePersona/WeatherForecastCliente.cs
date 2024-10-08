@@ -1,6 +1,6 @@
 namespace MicroservicioClientePersona
 {
-    public class WeatherForecast
+    public class WeatherForecastCliente
     {
         public DateOnly Date { get; set; }
 

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "wDov5QrFmWn1vCMYdOecknxmPvtUQTIcNyvfEfFgG/4=",
+  "Source": "MicroservicioCuentaMovimientos",
+  "BasePath": "_content/MicroservicioCuentaMovimientos",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

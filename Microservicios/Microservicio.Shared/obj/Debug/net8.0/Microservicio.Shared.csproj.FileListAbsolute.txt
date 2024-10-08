@@ -1,0 +1,12 @@
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\bin\Debug\net8.0\Microservicio.Shared.deps.json
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\bin\Debug\net8.0\Microservicio.Shared.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\bin\Debug\net8.0\Microservicio.Shared.pdb
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\obj\Debug\net8.0\Microservicio.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\obj\Debug\net8.0\Microservicio.Shared.AssemblyInfoInputs.cache
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\obj\Debug\net8.0\Microservicio.Shared.AssemblyInfo.cs
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\obj\Debug\net8.0\Microservicio.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\obj\Debug\net8.0\Microservicio.Shared.sourcelink.json
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\obj\Debug\net8.0\Microservicio.Shared.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\obj\Debug\net8.0\refint\Microservicio.Shared.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\obj\Debug\net8.0\Microservicio.Shared.pdb
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\Microservicio.Shared\obj\Debug\net8.0\ref\Microservicio.Shared.dll

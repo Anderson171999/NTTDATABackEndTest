@@ -11,9 +11,9 @@ public partial class CLIENTE
 
     public int? PersonaId { get; set; }
 
-    public string Contraseña { get; set; }
+    public string Clave { get; set; }
 
-    public bool Estado { get; set; }
+    public bool? Estado { get; set; }
 
     public virtual PERSONA Persona { get; set; }
 }

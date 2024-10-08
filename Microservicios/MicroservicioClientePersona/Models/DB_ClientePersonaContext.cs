@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MicroservicioClientePersona.Models;
 
-public partial class DB_CUENTASContext : DbContext
+public partial class DB_ClientePersonaContext : DbContext
 {
-    public DB_CUENTASContext(DbContextOptions<DB_CUENTASContext> options)
+    public DB_ClientePersonaContext(DbContextOptions<DB_ClientePersonaContext> options)
         : base(options)
     {
     }
@@ -23,9 +23,9 @@ public partial class DB_CUENTASContext : DbContext
         {
             entity.HasKey(e => e.ClienteId).HasName("PK__CLIENTE__71ABD0878C3A576A");
 
-            entity.Property(e => e.Contraseña)
-                .IsRequired()
-                .HasMaxLength(200);
+            entity.Property(e => e.Clave)
+                .HasMaxLength(100)
+                .IsUnicode(false);
 
             entity.HasOne(d => d.Persona).WithMany(p => p.CLIENTE)
                 .HasForeignKey(d => d.PersonaId)

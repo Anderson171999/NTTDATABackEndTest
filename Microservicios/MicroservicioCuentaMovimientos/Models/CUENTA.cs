@@ -7,7 +7,9 @@ namespace MicroservicioCuentaMovimientos.Models;
 
 public partial class CUENTA
 {
-    public int NumeroCuenta { get; set; }
+    public int CuentaId { get; set; }
+
+    public string NumeroCuenta { get; set; }
 
     public int? ClienteId { get; set; }
 

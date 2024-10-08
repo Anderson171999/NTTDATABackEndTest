@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "tcl/gTKLTgUYRtFx0vMkaC5C+fPUOJZH9p6Cc8/lqhE=",
+  "Hash": "S1iJbzJ2Z9MpYnpaLPgz2elvgs6a/dk5PpIKGwPwP5w=",
   "Source": "MicroservicioClientePersona",
   "BasePath": "_content/MicroservicioClientePersona",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\Stalin\\source\\repos\\NTTDATABackEndTest\\Microservicios\\MicroservicioCuentaMovimientos\\MicroservicioCuentaMovimientos.csproj",
+      "Version": 2,
+      "Source": "MicroservicioCuentaMovimientos",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": []
 }

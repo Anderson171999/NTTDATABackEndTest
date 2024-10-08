@@ -21,8 +21,9 @@ public partial class DB_CuentaMovimientoContext : DbContext
     {
         modelBuilder.Entity<CUENTA>(entity =>
         {
-            entity.HasKey(e => e.NumeroCuenta).HasName("PK__CUENTA__E039507A66424E9A");
+            entity.HasKey(e => e.CuentaId).HasName("PK__CUENTA__40072E81D42CE74A");
 
+            entity.Property(e => e.NumeroCuenta).HasMaxLength(100);
             entity.Property(e => e.SaldoInicial).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.TipoCuenta)
                 .IsRequired()
@@ -31,7 +32,7 @@ public partial class DB_CuentaMovimientoContext : DbContext
 
         modelBuilder.Entity<MOVIMIENTO>(entity =>
         {
-            entity.HasKey(e => e.MovimientoId).HasName("PK__MOVIMIEN__BF923C2CD79E9CA6");
+            entity.HasKey(e => e.MovimientoId).HasName("PK__MOVIMIEN__BF923C2C807F8F00");
 
             entity.Property(e => e.Fecha).HasColumnType("datetime");
             entity.Property(e => e.Saldo).HasColumnType("decimal(18, 2)");
@@ -40,9 +41,9 @@ public partial class DB_CuentaMovimientoContext : DbContext
                 .HasMaxLength(50);
             entity.Property(e => e.Valor).HasColumnType("decimal(18, 2)");
 
-            entity.HasOne(d => d.NumeroCuentaNavigation).WithMany(p => p.MOVIMIENTO)
-                .HasForeignKey(d => d.NumeroCuenta)
-                .HasConstraintName("FK__MOVIMIENT__Numer__403A8C7D");
+            entity.HasOne(d => d.Cuenta).WithMany(p => p.MOVIMIENTO)
+                .HasForeignKey(d => d.CuentaId)
+                .HasConstraintName("FK__MOVIMIENT__Cuent__45F365D3");
         });
 
         OnModelCreatingPartial(modelBuilder);

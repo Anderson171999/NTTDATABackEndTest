@@ -9,7 +9,7 @@ public partial class MOVIMIENTO
 {
     public int MovimientoId { get; set; }
 
-    public int? NumeroCuenta { get; set; }
+    public int? CuentaId { get; set; }
 
     public DateTime Fecha { get; set; }
 
@@ -19,5 +19,5 @@ public partial class MOVIMIENTO
 
     public decimal Saldo { get; set; }
 
-    public virtual CUENTA NumeroCuentaNavigation { get; set; }
+    public virtual CUENTA Cuenta { get; set; }
 }

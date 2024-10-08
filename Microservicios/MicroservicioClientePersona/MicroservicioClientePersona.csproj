@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MicroservicioCuentaMovimientos\MicroservicioCuentaMovimientos.csproj" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>

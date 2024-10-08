@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MicroservicioCuentaMovimientos.Models;
 
-public partial class DB_CUENTASContext : DbContext
+public partial class DB_CuentaMovimientoContext : DbContext
 {
-    public DB_CUENTASContext(DbContextOptions<DB_CUENTASContext> options)
+    public DB_CuentaMovimientoContext(DbContextOptions<DB_CuentaMovimientoContext> options)
         : base(options)
     {
     }

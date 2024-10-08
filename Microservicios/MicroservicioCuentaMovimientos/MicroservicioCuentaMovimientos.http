@@ -1,0 +1,6 @@
+@MicroservicioCuentaMovimientos_HostAddress = http://localhost:5035
+
+GET {{MicroservicioCuentaMovimientos_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

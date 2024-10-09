@@ -15,6 +15,7 @@ builder.Services.AddDbContext<DB_ClientePersonaContext>(options =>
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddHttpClient();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

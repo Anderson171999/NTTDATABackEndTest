@@ -39,7 +39,9 @@ public partial class DB_CuentaMovimientoContext : DbContext
             entity.Property(e => e.TipoMovimiento)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.Valor).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.Valor)
+                .HasMaxLength(50)
+                .IsUnicode(false);
 
             entity.HasOne(d => d.Cuenta).WithMany(p => p.MOVIMIENTO)
                 .HasForeignKey(d => d.CuentaId)

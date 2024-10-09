@@ -1,4 +1,5 @@
-﻿using MicroservicioClientePersona.Models;
+﻿using Microservicio.Shared;
+using MicroservicioClientePersona.Models;
 using System.Linq.Expressions;
 
 namespace MicroservicioClientePersona.RepositoriesClientPerson.IRepositoryClientPerson
@@ -10,7 +11,6 @@ namespace MicroservicioClientePersona.RepositoriesClientPerson.IRepositoryClient
         Task<CLIENTE> Obtener(Expression<Func<CLIENTE, bool>> filtro = null);
         Task<bool> Editar(CLIENTE entidad);
         Task<bool> Eliminar(CLIENTE entidad);
-
 
     }
 }

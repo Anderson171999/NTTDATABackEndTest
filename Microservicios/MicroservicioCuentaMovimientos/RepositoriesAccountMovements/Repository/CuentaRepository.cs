@@ -78,7 +78,23 @@ namespace MicroservicioClientePersona.RepositoriesClientPerson.RepositoryClientP
         }
 
 
+        public async Task<CUENTA> ObtenerPorId(int cuentaId)
+        {
+            return await _context.Set<CUENTA>().FindAsync(cuentaId);
+        }
 
+        public async Task ActualizarSaldo(CUENTA cuenta)
+        {
+            _context.Entry(cuenta).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<CUENTA>> ObtenerCuentasPorCliente(int clienteId)
+        {
+            return await _context.CUENTA
+                .Where(c => c.ClienteId == clienteId)
+                .ToListAsync();
+        }
 
     }
 }

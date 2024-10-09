@@ -11,6 +11,10 @@ namespace MicroservicioClientePersona.RepositoriesClientPerson.IRepositoryClient
         Task<bool> Editar(CUENTA entidad);
         Task<bool> Eliminar(CUENTA entidad);
 
+        Task<CUENTA> ObtenerPorId(int cuentaId);
+        Task ActualizarSaldo(CUENTA cuenta);
+
+        Task<List<CUENTA>> ObtenerCuentasPorCliente(int clienteId);
 
     }
 }

@@ -15,6 +15,8 @@ builder.Services.AddDbContext<DB_CuentaMovimientoContext>(options =>
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddScoped<ICuentaRepository, CuentaRepository>();
+builder.Services.AddScoped<IMovimientoRepository, MovimientoRepository>();
+builder.Services.AddHttpClient();
 
 
 

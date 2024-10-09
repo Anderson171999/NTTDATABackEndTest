@@ -11,14 +11,11 @@ namespace MicroservicioClientePersona.Utilidades
         {
             #region Cuenta
             CreateMap<CUENTA, CuentaDTO>().ReverseMap();
-
-            CreateMap<CUENTA, CuentaDTO>()
-                .ForMember(destino =>
-                    destino.ClienteId,
-                    opt => opt.MapFrom(origen => origen.ClienteId)
-                    );
             #endregion Cuenta
 
+            #region Movimiento
+            CreateMap<MOVIMIENTO, MovimientoDTO>().ReverseMap();
+            #endregion Movimiento
 
         }
     }

@@ -95,6 +95,13 @@ namespace MicroservicioClientePersona.RepositoriesClientPerson.RepositoryClientP
                 .Where(c => c.ClienteId == clienteId)
                 .ToListAsync();
         }
+        public async Task<CUENTA> ObtenerPorNumeroCuenta(string numeroCuenta)
+        {
+            return await _context.CUENTA.FirstOrDefaultAsync(c => c.NumeroCuenta == numeroCuenta);
+        }
+
+
+
 
     }
 }

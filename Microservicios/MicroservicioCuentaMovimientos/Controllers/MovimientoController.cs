@@ -12,7 +12,7 @@ namespace MicroservicioCuentaMovimientos.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IMovimientoRepository _movimientoRepository;
-        private readonly ICuentaRepository _cuentaRepository;  // Repositorio para actualizar la cuenta
+        private readonly ICuentaRepository _cuentaRepository;
 
         public MovimientoController(IMapper mapper, IMovimientoRepository movimientoRepository, ICuentaRepository cuentaRepository)
         {
@@ -20,6 +20,7 @@ namespace MicroservicioCuentaMovimientos.Controllers
             _movimientoRepository = movimientoRepository;
             _cuentaRepository = cuentaRepository;
         }
+
 
         [HttpPost]
         [Route("Crear")]
@@ -29,8 +30,8 @@ namespace MicroservicioCuentaMovimientos.Controllers
 
             try
             {
-                // Obtener la cuenta asociada
-                var cuenta = await _cuentaRepository.ObtenerPorId(request.CuentaId);
+                // Obtener la cuenta asociada por NumeroCuenta
+                var cuenta = await _cuentaRepository.ObtenerPorNumeroCuenta(request.NumeroCuenta);
                 if (cuenta == null)
                 {
                     _ResponseDTO = new ResponseDTO<MovimientoDTO>() { status = false, msg = "Cuenta no encontrada" };
@@ -60,8 +61,17 @@ namespace MicroservicioCuentaMovimientos.Controllers
                 cuenta.SaldoInicial += valorMovimiento;
                 request.Saldo = cuenta.SaldoInicial;  // El saldo del movimiento será el saldo actualizado de la cuenta
 
+                // Asignar la fecha actual si no fue enviada
+                if (request.Fecha == default(DateTime))
+                {
+                    request.Fecha = DateTime.Now;
+                }
+
                 // Mapear el DTO a la entidad MOVIMIENTO
                 MOVIMIENTO movimiento = _mapper.Map<MOVIMIENTO>(request);
+
+                // Asignar CuentaId en el movimiento mapeado
+                movimiento.CuentaId = cuenta.CuentaId;
 
                 // Crear el movimiento en la base de datos
                 MOVIMIENTO movimientoCreado = await _movimientoRepository.Crear(movimiento);
@@ -69,11 +79,17 @@ namespace MicroservicioCuentaMovimientos.Controllers
                 // Actualizar el saldo en la tabla Cuenta
                 await _cuentaRepository.ActualizarSaldo(cuenta);
 
+                // Mapear de nuevo el movimiento creado al DTO para la respuesta
+                var movimientoDTO = _mapper.Map<MovimientoDTO>(movimientoCreado);
+
+                // Asignar el NumeroCuenta a la respuesta
+                movimientoDTO.NumeroCuenta = cuenta.NumeroCuenta;  // Asegurar que el NumeroCuenta esté presente en la respuesta
+
                 _ResponseDTO = new ResponseDTO<MovimientoDTO>()
                 {
                     status = true,
                     msg = "Movimiento creado con éxito",
-                    value = _mapper.Map<MovimientoDTO>(movimientoCreado)
+                    value = movimientoDTO
                 };
 
                 return StatusCode(StatusCodes.Status200OK, _ResponseDTO);
@@ -84,5 +100,7 @@ namespace MicroservicioCuentaMovimientos.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, _ResponseDTO);
             }
         }
+
+
     }
 }

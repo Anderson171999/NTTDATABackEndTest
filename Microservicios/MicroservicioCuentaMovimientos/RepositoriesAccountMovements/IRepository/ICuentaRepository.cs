@@ -15,6 +15,8 @@ namespace MicroservicioClientePersona.RepositoriesClientPerson.IRepositoryClient
         Task ActualizarSaldo(CUENTA cuenta);
 
         Task<List<CUENTA>> ObtenerCuentasPorCliente(int clienteId);
+        Task<CUENTA> ObtenerPorNumeroCuenta(string numeroCuenta);
+
 
     }
 }

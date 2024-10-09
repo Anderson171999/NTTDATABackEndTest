@@ -33,6 +33,7 @@ C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuen
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -80,4 +81,3 @@ C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuen
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\obj\Debug\net8.0\MicroservicioCuentaMovimientos.pdb
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\obj\Debug\net8.0\MicroservicioCuentaMovimientos.genruntimeconfig.cache
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\obj\Debug\net8.0\ref\MicroservicioCuentaMovimientos.dll
-C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioCuentaMovimientos\bin\Debug\net8.0\Newtonsoft.Json.dll

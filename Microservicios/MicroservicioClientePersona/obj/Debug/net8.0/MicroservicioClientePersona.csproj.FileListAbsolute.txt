@@ -86,3 +86,12 @@ C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClie
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\MicroservicioCuentaMovimientos.pdb
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\obj\Debug\net8.0\MicroservicioClientePersona.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\xunit.runner.visualstudio.testadapter.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\xunit.runner.utility.netcoreapp10.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\Castle.Core.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\Moq.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\xunit.abstractions.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\xunit.assert.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\xunit.core.dll
+C:\Users\Stalin\source\repos\NTTDATABackEndTest\Microservicios\MicroservicioClientePersona\bin\Debug\net8.0\xunit.execution.dotnet.dll

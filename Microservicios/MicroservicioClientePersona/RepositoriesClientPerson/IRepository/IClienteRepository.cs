@@ -11,6 +11,6 @@ namespace MicroservicioClientePersona.RepositoriesClientPerson.IRepositoryClient
         Task<CLIENTE> Obtener(Expression<Func<CLIENTE, bool>> filtro = null);
         Task<bool> Editar(CLIENTE entidad);
         Task<bool> Eliminar(CLIENTE entidad);
-
+        Task<CLIENTE> ObtenerClientePorPersonaId(int personaId);
     }
 }

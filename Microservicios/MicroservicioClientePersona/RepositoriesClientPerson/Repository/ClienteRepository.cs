@@ -1,4 +1,5 @@
-﻿using MicroservicioClientePersona.Models;
+﻿using Microservicio.Shared;
+using MicroservicioClientePersona.Models;
 using MicroservicioClientePersona.RepositoriesClientPerson.IRepositoryClientPerson;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -79,6 +80,10 @@ namespace MicroservicioClientePersona.RepositoriesClientPerson.RepositoryClientP
 
 
 
+        public async Task<CLIENTE> ObtenerClientePorPersonaId(int personaId)
+        {
+            return await _context.CLIENTE.FirstOrDefaultAsync(c => c.PersonaId == personaId);
+        }
 
     }
 }

@@ -174,6 +174,50 @@ namespace MicroservicioClientePersona.Controllers
         }
 
 
+        [HttpGet("persona/{personaId}")]
+        public async Task<IActionResult> ObtenerPorPersonaId(int personaId)
+        {
+            ResponseDTO<ClienteDTO> _ResponseDTO = new ResponseDTO<ClienteDTO>();
+
+            try
+            {
+                // Usamos el método que ya tienes para buscar el cliente por PersonaId
+                CLIENTE cliente = await _clienteRepository.ObtenerClientePorPersonaId(personaId);
+
+                if (cliente != null)
+                {
+                    _ResponseDTO = new ResponseDTO<ClienteDTO>
+                    {
+                        status = true,
+                        msg = "Cliente encontrado",
+                        value = _mapper.Map<ClienteDTO>(cliente)
+                    };
+                    return StatusCode(StatusCodes.Status200OK, _ResponseDTO);
+                }
+                else
+                {
+                    _ResponseDTO = new ResponseDTO<ClienteDTO>
+                    {
+                        status = false,
+                        msg = "Cliente no encontrado"
+                    };
+                    return StatusCode(StatusCodes.Status404NotFound, _ResponseDTO);
+                }
+            }
+            catch (Exception ex)
+            {
+                _ResponseDTO = new ResponseDTO<ClienteDTO>
+                {
+                    status = false,
+                    msg = ex.Message
+                };
+                return StatusCode(StatusCodes.Status500InternalServerError, _ResponseDTO);
+            }
+        }
+
+
+
+
     }
 
 }

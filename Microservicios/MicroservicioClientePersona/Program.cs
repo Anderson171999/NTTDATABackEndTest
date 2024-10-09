@@ -15,6 +15,7 @@ builder.Services.AddDbContext<DB_ClientePersonaContext>(options =>
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IPersonaRepository, PersonaRepository>();
 builder.Services.AddHttpClient();
 
 builder.Services.AddControllers();

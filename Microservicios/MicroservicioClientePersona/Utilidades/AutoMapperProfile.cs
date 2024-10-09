@@ -23,6 +23,9 @@ namespace MicroservicioClientePersona.Utilidades
                     );
             #endregion Cliente
 
+            #region Persona
+            CreateMap<PERSONA, PersonaDTO>().ReverseMap();
+            #endregion Persona
 
         }
     }

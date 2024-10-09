@@ -79,6 +79,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MicroservicioClientePersona.Controllers.ClienteController",
+    "Method": "ObtenerPorPersonaId",
+    "RelativePath": "api/Cliente/persona/{personaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "personaId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MicroservicioClientePersona.Controllers.PersonaController",
+    "Method": "ObtenerPorIdentificacion",
+    "RelativePath": "api/Persona/identificacion/{identificacion}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "identificacion",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MicroservicioCuentaMovimientos.Controllers.CuentaController",
     "Method": "Crear",
     "RelativePath": "Cuenta/Crear",

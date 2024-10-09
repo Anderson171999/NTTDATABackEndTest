@@ -1,8 +1,11 @@
-﻿namespace Microservicio.Shared
+﻿using System.Text.Json.Serialization;
+
+namespace Microservicio.Shared
 {
     public class MovimientoDTO
     {
-        public string NumeroCuenta { get; set; }  // Cambiado de CuentaId a NumeroCuenta
+        [JsonIgnore]
+        public string NumeroCuenta { get; set; }
         public DateTime Fecha { get; set; }
         public string? TipoMovimiento { get; set; } 
         public string Valor { get; set; }

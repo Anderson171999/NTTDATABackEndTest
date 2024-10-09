@@ -4,7 +4,7 @@ namespace Microservicio.Shared
 {
     public class MovimientoDTO
     {
-        [JsonIgnore]
+        //[JsonIgnore]
         public string NumeroCuenta { get; set; }
         public DateTime Fecha { get; set; }
         public string? TipoMovimiento { get; set; } 

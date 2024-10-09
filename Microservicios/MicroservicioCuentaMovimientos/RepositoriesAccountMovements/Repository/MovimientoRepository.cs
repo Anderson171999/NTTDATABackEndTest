@@ -29,6 +29,46 @@ namespace MicroservicioClientePersona.RepositoriesClientPerson.RepositoryClientP
             }
         }
 
+        public async Task<MOVIMIENTO> Obtener(Expression<Func<MOVIMIENTO, bool>> filtro = null)
+        {
+            try
+            {
+                return await _context.MOVIMIENTO.Where(filtro).FirstOrDefaultAsync();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+        public async Task<bool> Editar(MOVIMIENTO entidad)
+        {
+            try
+            {
+                _context.Update(entidad);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> Eliminar(MOVIMIENTO entidad)
+        {
+            try
+            {
+                _context.MOVIMIENTO.Remove(entidad);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
         public async Task<List<MOVIMIENTO>> ObtenerMovimientosPorCuentaYFechas(int cuentaId, string fechaInicio, string fechaFin)
         {

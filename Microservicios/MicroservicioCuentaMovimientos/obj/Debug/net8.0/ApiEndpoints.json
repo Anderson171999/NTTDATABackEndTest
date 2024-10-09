@@ -79,6 +79,43 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MicroservicioCuentaMovimientos.Controllers.MovimientoController",
+    "Method": "Editar",
+    "RelativePath": "Movimiento/Editar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "Microservicio.Shared.MovimientoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MicroservicioCuentaMovimientos.Controllers.MovimientoController",
+    "Method": "Eliminar",
+    "RelativePath": "Movimiento/Eliminar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MicroservicioCuentaMovimientos.Controllers.ReporteController",
     "Method": "ObtenerReporte",
     "RelativePath": "reportes",

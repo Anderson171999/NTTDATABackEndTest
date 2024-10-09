@@ -102,6 +102,122 @@ namespace MicroservicioCuentaMovimientos.Controllers
         }
 
 
+        [HttpPut]
+        [Route("Editar/{id}")]
+        public async Task<IActionResult> Editar(int id, [FromBody] MovimientoDTO request)
+        {
+            ResponseDTO<bool> _ResponseDTO = new ResponseDTO<bool>();
+            try
+            {
+                // Obtener el movimiento existente por id
+                MOVIMIENTO _movimientoParaEditar = await _movimientoRepository.Obtener(u => u.MovimientoId == id);
+
+                if (_movimientoParaEditar == null)
+                {
+                    _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "No se encontró el movimiento", value = false };
+                    return StatusCode(StatusCodes.Status404NotFound, _ResponseDTO);
+                }
+
+                // Obtener la cuenta asociada al movimiento
+                var cuenta = await _cuentaRepository.ObtenerPorNumeroCuenta(request.NumeroCuenta);
+                if (cuenta == null)
+                {
+                    _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "Cuenta no encontrada", value = false };
+                    return StatusCode(StatusCodes.Status404NotFound, _ResponseDTO);
+                }
+
+                // Determinar el tipo de movimiento basado en el valor
+                decimal valorMovimiento = Convert.ToDecimal(request.Valor);
+
+                if (valorMovimiento < 0)
+                {
+                    // Retiro
+                    _movimientoParaEditar.TipoMovimiento = "Retiro";
+
+                    // Verificar si hay saldo suficiente para el retiro
+                    if (cuenta.SaldoInicial + valorMovimiento < 0)
+                    {
+                        _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "Saldo no disponible para el retiro", value = false };
+                        return StatusCode(StatusCodes.Status400BadRequest, _ResponseDTO);
+                    }
+                }
+                else
+                {
+                    // Depósito
+                    _movimientoParaEditar.TipoMovimiento = "Depósito";
+                }
+
+                // Actualizar el saldo de la cuenta y el saldo del movimiento
+                cuenta.SaldoInicial += valorMovimiento; // Actualizar el saldo de la cuenta
+                _movimientoParaEditar.Saldo = cuenta.SaldoInicial; // El saldo del movimiento será el saldo actualizado de la cuenta
+                _movimientoParaEditar.Valor = request.Valor; // Actualizar el valor del movimiento
+
+                // Guardar los cambios en el movimiento
+                bool respuestaMovimiento = await _movimientoRepository.Editar(_movimientoParaEditar);
+
+                if (respuestaMovimiento)
+                {
+                    // Actualizar el saldo en la tabla Cuenta
+                    await _cuentaRepository.ActualizarSaldo(cuenta);
+
+                    // En caso de éxito, asignamos los valores de respuesta adecuados
+                    _ResponseDTO = new ResponseDTO<bool>()
+                    {
+                        status = true,
+                        msg = "Movimiento editado correctamente.",
+                        value = true
+                    };
+                }
+                else
+                {
+                    _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "No se pudo editar el movimiento", value = false };
+                }
+
+                return StatusCode(StatusCodes.Status200OK, _ResponseDTO);
+            }
+            catch (Exception ex)
+            {
+                _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = ex.Message, value = false };
+                return StatusCode(StatusCodes.Status500InternalServerError, _ResponseDTO);
+            }
+        }
+
+
+        [HttpDelete]
+        [Route("Eliminar/{id}")]
+        public async Task<IActionResult> Eliminar(int id)
+        {
+            ResponseDTO<bool> _ResponseDTO = new ResponseDTO<bool>();
+            try
+            {
+                MOVIMIENTO _movimientoParaEliminar = await _movimientoRepository.Obtener(u => u.MovimientoId == id);
+
+                if (_movimientoParaEliminar != null)
+                {
+                    // Llamar al repositorio para eliminar el cliente
+                    bool respuesta = await _movimientoRepository.Eliminar(_movimientoParaEliminar);
+
+                    if (respuesta)
+                        _ResponseDTO = new ResponseDTO<bool>() { status = true, msg = "Movimiento eliminado correctamente", value = true };
+                    else
+                        _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "No se pudo eliminar el movimiento" };
+                }
+                else
+                {
+                    _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "No se encontró el movimiento" };
+                }
+
+                return StatusCode(StatusCodes.Status200OK, _ResponseDTO);
+            }
+            catch (Exception ex)
+            {
+                _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = ex.Message };
+                return StatusCode(StatusCodes.Status500InternalServerError, _ResponseDTO);
+            }
+        }
+
+
+
 
     }
 }

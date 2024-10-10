@@ -190,34 +190,62 @@ namespace MicroservicioCuentaMovimientos.Controllers
             ResponseDTO<bool> _ResponseDTO = new ResponseDTO<bool>();
             try
             {
+                // Obtener el movimiento que se desea eliminar por su id
                 MOVIMIENTO _movimientoParaEliminar = await _movimientoRepository.Obtener(u => u.MovimientoId == id);
 
-                if (_movimientoParaEliminar != null)
+                if (_movimientoParaEliminar == null)
                 {
-                    // Llamar al repositorio para eliminar el cliente
-                    bool respuesta = await _movimientoRepository.Eliminar(_movimientoParaEliminar);
+                    _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "No se encontró el movimiento", value = false };
+                    return StatusCode(StatusCodes.Status404NotFound, _ResponseDTO);
+                }
 
-                    if (respuesta)
-                        _ResponseDTO = new ResponseDTO<bool>() { status = true, msg = "Movimiento eliminado correctamente", value = true };
-                    else
-                        _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "No se pudo eliminar el movimiento" };
-                }
-                else
+                // Obtener la cuenta asociada al movimiento
+                var cuenta = await _cuentaRepository.Obtener(u => u.CuentaId == _movimientoParaEliminar.CuentaId);
+                if (cuenta == null)
                 {
-                    _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "No se encontró el movimiento" };
+                    _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "Cuenta no encontrada", value = false };
+                    return StatusCode(StatusCodes.Status404NotFound, _ResponseDTO);
                 }
+
+                // Revertir el saldo de la cuenta. Si fue un depósito, restamos el valor, si fue un retiro, lo sumamos
+                decimal valorMovimiento = Convert.ToDecimal(_movimientoParaEliminar.Valor);
+
+                if (_movimientoParaEliminar.TipoMovimiento == "Depósito")
+                {
+                    cuenta.SaldoInicial -= valorMovimiento; // Restar el valor del depósito
+                }
+                else if (_movimientoParaEliminar.TipoMovimiento == "Retiro")
+                {
+                    cuenta.SaldoInicial += valorMovimiento; // Sumar el valor del retiro
+                }
+
+                // Eliminar el movimiento de la base de datos
+                bool respuestaEliminacion = await _movimientoRepository.Eliminar(_movimientoParaEliminar);
+
+                if (!respuestaEliminacion)
+                {
+                    _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = "No se pudo eliminar el movimiento", value = false };
+                    return StatusCode(StatusCodes.Status400BadRequest, _ResponseDTO);
+                }
+
+                // Actualizar el saldo de la cuenta en la base de datos
+                await _cuentaRepository.ActualizarSaldo(cuenta);
+
+                _ResponseDTO = new ResponseDTO<bool>()
+                {
+                    status = true,
+                    msg = "Movimiento eliminado correctamente y saldo actualizado.",
+                    value = true
+                };
 
                 return StatusCode(StatusCodes.Status200OK, _ResponseDTO);
             }
             catch (Exception ex)
             {
-                _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = ex.Message };
+                _ResponseDTO = new ResponseDTO<bool>() { status = false, msg = ex.Message, value = false };
                 return StatusCode(StatusCodes.Status500InternalServerError, _ResponseDTO);
             }
         }
-
-
-
 
     }
 }
